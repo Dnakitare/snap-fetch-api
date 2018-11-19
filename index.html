@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Snap Challenge Fetch API</title>
+	</head>
+	<body>
+		<button type="button" onclick="placeHolder();">Fetch
+		</button>
+		<script>
+			function	placeHolder() {
+				const body = document.querySelector('body');
+
+				var randomTodo = Math.floor(Math.random() * 100) + 1
+				fetch('https://jsonplaceholder.typicode.com/todos/' + randomTodo)
+					.then(function(response) {
+						return response.json();
+					})
+					.then(function(apiJson){
+						let jsonObject = (apiJson['title']);
+						let json = document.createElement('p');
+						json.innerHTML = "<strong> Here is some text inserted using fetch API: </strong>" + jsonObject;
+						body.appendChild(json);
+						console.log(json);
+					});
+			}
+		</script>
+	</body>
+</html>
